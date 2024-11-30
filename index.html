@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -21,9 +22,21 @@
             max-width: 100vw;
             overflow-x: hidden;
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
  
+        h2 {
+            line-height: 1.2;
+        }
+        
+        h3 {
+            font-size: 25px;
+        }
+
         .section {
-            padding: 6rem 2rem;
+            padding: 3rem 2rem;
             position: relative;
         }
 
@@ -46,14 +59,14 @@
         }
 
         .taxometer {
-            position: fixed;
+            position:fixed;
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             padding: 0.5rem;
             text-align: center;
-            font-size: 0.8rem;
+            font-size: 1.2rem;
             border-bottom: 2px solid #FFD700;
             z-index: 1000;
             animation: taxBlink 2s infinite;
@@ -91,9 +104,9 @@
         
         .sem-taxa-badge {
             position: absolute;
-            top: -15px;
+            top: 20px;
             right: -15px;
-            background: rgba(255,65,54,0.9);
+            background: rgba(255,65,54,1);
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 20px;
@@ -125,6 +138,69 @@
             margin-top: 3rem;
         }
 
+        
+
+        @media (max-width: 768px) {
+            .hero {
+                margin-top: 50px; /* Um pouco mais de espaço no mobile */
+            }
+
+            .hero-content {
+                padding: 0;
+                text-align: center;
+            }
+
+            .hero-flex {
+                flex-direction: column;
+                gap: 0.1rem;
+                margin-top: 0.1rem;
+            }
+
+            .hero-left {
+                width: 100%;
+            }
+
+            .hero-right {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+            .hero-image {
+                width: 90%;
+                max-width: 300px;
+            }
+
+            .cta-container {
+                flex-direction: column;
+                align-items: center;
+                display: flex;
+                gap: 0.3rem;
+                margin: 0.1rem 0;
+            }
+
+            .cta-button {
+                width: 80%;
+            }
+
+            .title {
+                font-size: 4rem;
+            }
+            
+            .taxometer {
+                font-size: 0.8rem;
+                padding: 0.5rem;
+                line-height: 1.3;
+            }
+
+            .sem-taxa-badge {
+                top: -1px;  
+                font-size: 0.8rem;
+            }
+        }
+
+
+
         .hero-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -150,63 +226,11 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
-        @media (max-width: 768px) {
-            .hero {
-                margin-top: 60px; /* Um pouco mais de espaço no mobile */
-            }
-
-            .hero-content {
-                padding: 0;
-                text-align: center;
-            }
-
-            .hero-flex {
-                flex-direction: column;
-                gap: 2rem;
-                margin-top: 2rem;
-            }
-
-            .hero-left {
-                width: 100%;
-            }
-
-            .hero-right {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-            }
-
-            .hero-image {
-                width: 80%;
-                max-width: 300px;
-            }
-
-            .cta-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .cta-button {
-                width: 80%;
-            }
-
-            .title {
-                font-size: 3rem;
-            }
-            
-            .taxometer {
-                font-size: 0.8rem;
-                padding: 0.5rem;
-                line-height: 1.2;
-            }
-        }
-
-
 
 
         .cta-container {
             display: flex;
-            gap: 1rem;
+            
             margin: 2rem 0;
         }
 
@@ -242,42 +266,6 @@
             padding: 2px 8px;
             border-radius: 12px;
             font-size: 0.7rem;
-        }
-
-
-
-
-        .utilities-section {
-            background: rgba(0,0,0,0.3);
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-
-        .utilities-container {
-            max-width: 500px;
-            margin: 0 auto;
-            background: rgba(0,0,0,0.2);
-            padding: 2rem;
-            border-radius: 20px;
-            border: 1px solid rgba(255,215,0,0.1);
-        }
-
-        .utilities-list {
-            list-style: none;
-            font-size: 1.2rem;
-            color: #fff;
-            margin: 2rem 0;
-        }
-
-        .utilities-list li {
-            margin: 0.8rem 0;
-            opacity: 0.9;
-        }
-
-        .utilities-footer {
-            font-style: italic;
-            color: rgba(255,255,255,0.7);
-            font-size: 0.9rem;
         }
 
 
@@ -365,6 +353,44 @@
 
 
 
+        .utilities-section {
+            background: rgba(0,0,0,0.3);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .utilities-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(0,0,0,0.2);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,215,0,0.1);
+        }
+
+        .utilities-list {
+            list-style: none;
+            font-size: 1.2rem;
+            color: #fff;
+            margin: 2rem 0;
+        }
+
+        .utilities-list li {
+            margin: 0.8rem 0;
+            opacity: 0.9;
+        }
+
+        .utilities-footer {
+            font-style: italic;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+
+
+
+
+
         .meme-gallery-section {
             background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%);
             padding: 4rem 2rem;
@@ -402,7 +428,7 @@
         .meme-button {
             background: rgba(255,255,255,0.1);
             border: none;
-            padding: 1rem 2rem;
+            padding: 1rem 2.5rem;
             border-radius: 50px;
             color: #fff;
             cursor: pointer;
@@ -432,7 +458,7 @@
             border: none;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 2rem;
+            margin-top: 0.5rem;
             transition: transform 0.2s;
         }
 
@@ -538,10 +564,14 @@
             border-radius: 15px;
             text-align: center;
             border: 1px solid rgba(255,215,0,0.1);
+            padding-bottom: 2rem;
         }
+
+        /* Section: Roadmap do Caos */
 
         .feature-section {
             background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.8));
+            padding-top: 2rem;
         }
 
         .feature-grid {
@@ -592,6 +622,7 @@
             font-size: 2.5rem;
             margin-bottom: 2rem;
             text-align: center;
+            line-height: 1.2;
         }
 
         .disclaimer {
@@ -679,7 +710,7 @@
 
     <section class="hero">
         <div class="taxometer">
-            🚨 IMPOSTO ALERT: Mais um imposto detectado! $TAXAD carregando novas máximas... 🚀
+            🚨 <b>IMPOSTO ALERT: Mais um imposto detectado!</b> <br> $TAXAD carregando novas máximas... 🚀
         </div>
         
         <div class="hero-content">
@@ -692,7 +723,7 @@
                     <p class="subtitle">A Única Moeda que LUCRA com Imposto 🤑</p>
                     <div class="cta-container">
                         <a href="#" class="cta-button cta-primary">
-                            Comprar $TAXAD
+                            COMPRAR $TAXAD
                             <span class="taxa-badge">0% taxa</span>
                         </a>
                         <a href="#meme-gallery" class="cta-button cta-secondary">
@@ -710,25 +741,11 @@
         </div>
     </section>
 
-    <section class="utilities-section">
-        <div class="utilities-container">
-            <h2 style="color: #FFD700; font-size: 2rem; margin-bottom: 1rem;">UTILIDADES</h2>
-            <ul class="utilities-list">
-                <li>• Nenhuma</li>
-                <li>• Zero</li>
-                <li>• Void</li>
-                <li>• Null</li>
-            </ul>
-            <p class="utilities-footer">(Igual imposto, mas pelo menos não tira seu dinheiro)</p>
-        </div>
-    </section>
-
-
     <section class="meme-gallery-section", id="meme-gallery" class="meme-gallery-section">
         
-        <h2 style="color: #FFD700; font-size: 2.5rem; margin-bottom: 2rem;">MEME GALLERY</h2>
-        <p style="color: #FFD700; max-width: 800px; margin: 0 auto 2rem; font-size: 1.1rem; line-height: 1.6;">
-            Do país que transformou 7x1 em piada, chega a moeda que transforma imposto em lucro! 🤑 <br><br> Cada novo meme criado = A moeda sobe! 🚀 <br> Escolha seus memes e provoque a ALTA INFINITA! 🎯
+        <h2 style="color: #FFD700; font-size: 2.5rem; margin-bottom: 2rem;">MEME GALLERY:</h2>
+        <p style="color: #FFD700; max-width: 800px; margin: 0 auto 2rem; font-size: 1.1rem; line-height: 1.4;">
+            Do país que transformou 7x1 em piada, <b>chega a moeda que transforma imposto em lucro!</b> 🤑 <br><br> Cada novo meme criado = A moeda sobe! 🚀 <br><br> Crie seus memes, compartilhe nas redes <b>e provoque a ALTA INFINITA!</b> 📈💰
         </p>
         <div class="meme-container">
             <div class="meme-viewer">
@@ -760,7 +777,7 @@
         <div class="about-container">
             <div class="about-intro">
                 <h2 style="color: #FFD700; font-size: 2.5rem; margin-bottom: 2rem;">A História do $TAXAD</h2>
-                <p>$TAXAD nasceu quando um ministro decidiu que taxar tudo era uma boa ideia. O povo brasileiro, cansado de tanto imposto, decidiu transformar a tristeza em meme - e os memes em ALTA INFINITA 📈🤑.</p>
+                <p>$TAXAD nasceu quando um ministro decidiu que taxar tudo era uma boa ideia. <br><br> O povo brasileiro, cansado de tanto imposto, decidiu transformar a tristeza em meme - e os memes em ALTA INFINITA 📈🤑.</p>
                 <p style="margin-top: 1rem">Os cachorros e sapos já tiveram sua vez. É hora do ministro taxador reinar (ou não).</p>
             </div>
     
@@ -805,10 +822,24 @@
     </section>
 
 
+    <section class="utilities-section">
+        <div class="utilities-container">
+            <h2 style="color: #FFD700; font-size: 2rem; margin-bottom: 1rem;">UTILIDADES</h2>
+            <ul class="utilities-list">
+                <li>• Nenhuma</li>
+                <li>• Zero</li>
+                <li>• Void</li>
+                <li>• Null</li>
+            </ul>
+            <p class="utilities-footer">(Igual imposto, mas pelo menos não tira seu dinheiro)</p>
+        </div>
+    </section>
+
+
     <section class="section">
         <div class="container">
             <h2 class="section-title">COMO ADERIR À ZOEIRA 🎭</h2>
-            <p>(Como comprar $TAXAD)</p>
+            <p style="text-align: center;">(Como comprar $TAXAD)</p>
             <div class="how-to-buy">
                 <div class="step-card">
                     <i class="fas fa-wallet fa-3x" style="color: #FFD700; margin-bottom: 1rem;"></i>
@@ -837,18 +868,18 @@
             <h2 class="section-title">Tokenomics Anti-Taxa</h2>
             <div class="tokenomics-grid">
                 <div class="tokenomics-card">
-                    <h3 style="color: #FFD700;">Supply Total</h3>
-                    <p style="font-size: 1.2rem; margin: 1rem 0;">3.159.305.527,37 $TAXAD</p>
+                    <h3 style="color: #FFD700; font-size: 1.8rem;">Supply Total</h3>
+                    <p style="font-size: 1.2rem; margin: 1rem 0;"><b>3.159.305.527,37</b> $TAXADs</p>
                     <small>(exatamente os impostos pagos em 2023, pra nunca esquecer)</small>
                 </div>
                 <div class="tokenomics-card">
-                    <h3 style="color: #FFD700;">Distribuição</h3>
+                    <h3 style="color: #FFD700; font-size: 1.8rem;">Distribuição</h3>
                     <p>93.1% → Pool de Liquidez (queimado)</p>
                     <p>6.9% → Multi-sig pra listings</p>
                     <small>(taxadcexwallet.eth)</small>
                 </div>
                 <div class="tokenomics-card">
-                    <h3 style="color: #FFD700;">Taxas</h3>
+                    <h3 style="color: #FFD700; font-size: 1.8rem;">Taxas:</h3>
                     <p style="font-size: 1.2rem; color: #FFD700;">ZERO</p>
                     <small>(a ironia é o marketing)</small>
                 </div>
@@ -858,13 +889,14 @@
 
     <section class="section feature-section">
         <div class="container">
-            <h2 class="section-title">ROADMAP DO CAOS (features que ainda ñ existem)*</h2>
+            <h2 class="section-title">ROADMAP DO CAOS:</h2>
+            <p style="text-align: center;">(*features que ainda ñ existem)</p>
             <div class="feature-grid">
                 <div class="feature-card">
                     <i class="fas fa-radar fa-2x" style="color: #FFD700; margin-bottom: 1rem;"></i>
                     <h3>Radar Anti-Taxa</h3>
                     <p>RNA - Radar Nacional Anti-taxa</p>
-                    <small>*poder do token = poder do meme</small>
+                    <small>*nosso "batsinal" para criação de MAIS MEMES!</small>
                 </div>
                 <div class="feature-card">
                     <i class="fas fa-robot fa-2x" style="color: #FFD700; margin-bottom: 1rem;"></i>
