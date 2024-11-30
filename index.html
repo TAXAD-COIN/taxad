@@ -75,6 +75,28 @@
             line-height: 1.2;
         }
 
+
+        .impostometro {
+            background: rgba(0,0,0,0.9);
+            color: #FFD700;
+            text-align: center;
+            padding: 1rem;
+            font-size: 1.2rem;
+            border-top: 2px solid #FFD700;
+            border-bottom: 2px solid #FFD700;
+            margin: 2rem 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+
+
+
         .hero-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -643,7 +665,19 @@
             animation: float 3s ease-in-out infinite;
         }
     </style>
+    
     <script>
+        const easterEggs = [
+            "Taxa de Aprovação: 69%",
+            "Número protocolo: 420-69",
+            "Imposto pago: R$ 4,20",
+            "Trust me bro: Source? MEI",
+            "Error 418: I'm a teapot (mas pago imposto)",
+            "Fonte: Confia 👍",
+            "Bug? Que nada, é feature",
+            "Taxa sonegada: R$ 0 (confia)",
+            "Aprovado pela Receita (sqn)",
+        ];
         const memes = [
             "https://uploads.metroimg.com/wp-content/uploads/2024/07/11113840/Taxad.jpg",
             "https://s2-g1.glbimg.com/NfKc8WOt3n1IW1efZPqbRGdNHdU=/0x0:933x775/600x0/smart/filters:gifv():strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2024/Y/b/deaI0oTui5nBAABOAZdw/gsrw1ghxaaesktc.jpg",
@@ -670,10 +704,13 @@
                 memeImg.src = memes[currentMemeIndex];
                 memeImg.classList.remove('slide-out');
                 memeImg.classList.add('slide-in');
-                memeCount.textContent = `Meme ${currentMemeIndex + 1} de ${memes.length}`;
+                
+                // Adiciona easter egg aleatório
+                const randomEgg = easterEggs[Math.floor(Math.random() * easterEggs.length)];
+                memeCount.innerHTML = `<strong style="font-size: 1.5rem;">Meme ${currentMemeIndex + 1} de ${memes.length}</strong> <br>${randomEgg}`;
             }, 300);
-        }   
-        
+        }      
+ 
         function compartilharMeme() {
             const memeAtual = memes[currentMemeIndex];
             if (navigator.share) {
@@ -704,6 +741,42 @@
             document.querySelector('.share-button').addEventListener('click', compartilharMeme);
         });
 
+    </script>
+    
+    <script>
+        async function fetchImpostometro() {
+            try {
+                // Tente buscar o HTML do site do impostômetro
+                const response = await fetch('https://impostometro.com.br/');
+                const text = await response.text();
+
+                // Crie um elemento DOM para analisar o HTML
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(text, 'text/html');
+
+                // Localize o valor do impostômetro no HTML
+                const impostometroValue = doc.querySelector('.valor-impostometro').textContent;
+
+                // Atualiza o contador na sua página
+                document.querySelector('#imposto-total').innerHTML = `R$ ${impostometroValue} sugados do BR!`;
+            } catch (error) {
+                console.error('Erro ao buscar o impostômetro:', error);
+                document.querySelector('#imposto-total').innerHTML = 'Erro ao carregar o impostômetro.';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchImpostometro(); // Chama a função ao carregar a página
+        });
+    </script>
+
+    <script>
+        // Som de "ka-ching" de caixa registradora
+        const taxSoundUrl = "https://cdn.freesound.org/previews/554/554841_12425847-lq.mp3";
+        const taxSound = new Audio(taxSoundUrl);
+
+        const isentarSoundUrl = "https://cdn.freesound.org/previews/431/431134_8704515-lq.mp3"; // Use o mesmo som ou outro, se preferir
+        const isentarSound = new Audio(isentarSoundUrl);
     </script>
 </head>
 <body>
@@ -822,6 +895,33 @@
     </section>
 
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+        updateMemeDisplay();
+
+        document.querySelector('.meme-button.taxar').addEventListener('click', () => {
+            currentMemeIndex = (currentMemeIndex + 1) % memes.length;
+            updateMemeDisplay();
+            // Toca o som ao clicar em "taxar"
+            taxSound.play();
+        });
+
+        document.querySelector('.meme-button.isentar').addEventListener('click', () => {
+            currentMemeIndex = (currentMemeIndex - 1 + memes.length) % memes.length;
+            updateMemeDisplay();
+            // Toca o som ao clicar em "isentar"
+            isentarSound.play();
+        });
+
+        document.querySelector('.share-button').addEventListener('click', compartilharMeme);
+        });
+    </script>
+
+
+
+
+
+
     <section class="utilities-section">
         <div class="utilities-container">
             <h2 style="color: #FFD700; font-size: 2rem; margin-bottom: 1rem;">UTILIDADES</h2>
@@ -832,6 +932,11 @@
                 <li>• Null</li>
             </ul>
             <p class="utilities-footer">(Igual imposto, mas pelo menos não tira seu dinheiro)</p>
+            <img 
+                src="https://preview.redd.it/memes-de-faz-o-l-ai-pra-vcs-v0-q389nwkr87x91.jpg?width=800&format=pjpg&auto=webp&s=033ab6a358abbc52b14dd907a4ee2e3e80b8f43e"
+                alt="Meme Faz o L" 
+                style="max-width: 100%; margin-top: 2rem; border-radius: 10px;"
+            >
         </div>
     </section>
 
@@ -887,6 +992,7 @@
         </div>
     </section>
 
+
     <section class="section feature-section">
         <div class="container">
             <h2 class="section-title">ROADMAP DO CAOS:</h2>
@@ -922,5 +1028,9 @@
             <small>(Igual os impostos, mas pelo menos a gente se diverte)</small>
         </p>
     </div>
+
+
+
+
 </body>
 </html>
