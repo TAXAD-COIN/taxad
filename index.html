@@ -506,7 +506,6 @@
             opacity: 1;
         }
 
-
         .meme-viewer {
             width: 100%;
             height: 500px;
@@ -533,7 +532,31 @@
             transform: scale(1);
         }
 
+        @keyframes buttonClick {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
 
+        .button-epic {
+            transition: transform 0.3s, box-shadow 0.3s; /* Apenas animações de transformação e sombra */
+        }
+
+        .button-epic:hover {
+            transform: scale(1.05); /* Aumenta um pouco o tamanho */
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8); /* Brilho ao redor do botão */
+        }
+
+        .button-epic:active {
+            animation: buttonClick 0.3s forwards; /* Aplica a animação ao clicar */
+        }
 
 
 
@@ -777,6 +800,10 @@
 
         const isentarSoundUrl = "https://cdn.freesound.org/previews/431/431134_8704515-lq.mp3"; // Use o mesmo som ou outro, se preferir
         const isentarSound = new Audio(isentarSoundUrl);
+
+        const espalheRevoltaSoundUrl = "https://cdn.freesound.org/previews/703/703306_321967-lq.mp3"; // URL do som
+        const espalheRevoltaSound = new Audio(espalheRevoltaSoundUrl);
+
     </script>
 </head>
 <body>
@@ -826,17 +853,17 @@
             </div>
     
             <div class="meme-controls">
-                <button class="meme-button taxar">
+                <button class="meme-button taxar button-epic">
                     <i class="fas fa-hand-holding-usd"></i>
                     Taxar
                 </button>
-                <button class="meme-button isentar">
+                <button class="meme-button isentar button-epic">
                     <i class="fas fa-shield-alt"></i>
                     Isentar
                 </button>
             </div>
     
-            <button class="share-button">
+            <button class="share-button button-epic">
                 <i class="fas fa-share-alt" style="margin-right: 8px;"></i>
                 ESPALHE A REVOLTA 😈
             </button>
@@ -902,18 +929,28 @@
         document.querySelector('.meme-button.taxar').addEventListener('click', () => {
             currentMemeIndex = (currentMemeIndex + 1) % memes.length;
             updateMemeDisplay();
-            // Toca o som ao clicar em "taxar"
-            taxSound.play();
+            
+            // Reinicie e toque o som
+            taxSound.currentTime = 0; // Reinicia o som para o início
+            taxSound.play(); // Toca o som
         });
 
         document.querySelector('.meme-button.isentar').addEventListener('click', () => {
             currentMemeIndex = (currentMemeIndex - 1 + memes.length) % memes.length;
             updateMemeDisplay();
-            // Toca o som ao clicar em "isentar"
-            isentarSound.play();
+            
+            // Reinicie e toque o som
+            isentarSound.currentTime = 0; // Reinicia o som para o início
+            isentarSound.play(); // Toca o som
         });
 
-        document.querySelector('.share-button').addEventListener('click', compartilharMeme);
+        document.querySelector('.share-button').addEventListener('click', () => {
+            compartilharMeme();
+
+            // Reinicie e toque o som de espalhar a revolta
+            espalheRevoltaSound.currentTime = 0; // Reinicia o som para o início
+            espalheRevoltaSound.play(); // Toca o som
+        });
         });
     </script>
 
